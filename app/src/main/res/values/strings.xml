@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Stock</string>
+    <string name="stock_sh_name">名称</string>
+    <string name="stock_sz_name">单股价格</string>
+    <string name="stock_chuang_name">涨跌幅</string>
+    <string name="button_add_label">添加股票</string>
+</resources>
