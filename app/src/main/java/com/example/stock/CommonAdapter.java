@@ -10,10 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author sx  2022/2/28 8:53
- * @email 1668626317@qq.com
- */
+
 public abstract class CommonAdapter<T> extends RecyclerView.Adapter<ViewHolder> {
     private int layoutId;
     private List<T> data;

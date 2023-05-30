@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import java.io.IOException;
@@ -18,10 +19,11 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private String url = "http://qt.gtimg.cn/q=";
     private String mContent;
+    private Button main;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,9 +44,17 @@ public class MainActivity extends AppCompatActivity {
                  new Thread(networkTask).start();//开子线程
             }
         });
-
         recyclerView.setAdapter(adapter);//绑定适配器
+
+        main=findViewById(R.id.button);//寻找退出按钮id
+        main.setOnClickListener(this);//给退出按钮安装监听器
     }
+
+    public void  onClick(View view){
+        Intent intent=new Intent(MainActivity.this, loginActivity.class);
+        startActivity(intent);
+    }
+
 
     //线程执行
     Runnable networkTask = new Runnable() {
@@ -98,8 +108,8 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
             return "error";
         }
-
     }
+
 
     //创建适配器
     private CommonAdapter<String> adapter = new CommonAdapter<String>(R.layout.item_main) {
