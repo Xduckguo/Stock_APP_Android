@@ -16,6 +16,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class RegisterActivity extends AppCompatActivity implements  CompoundButton.OnCheckedChangeListener{
+    //可以监听多选或单选按钮的更改事件
     private Button zc,dl;//声明注册、登录按钮的变量
     CheckBox cb1,cb2,cb3;//声明复选框1,2,3的变量
     EditText et1,et2;//声明输入文本框1,2的变量
@@ -26,30 +27,22 @@ public class RegisterActivity extends AppCompatActivity implements  CompoundButt
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register);
+
         View v = findViewById(R.id.CL);//找到你要设透明背景的layout 的id
 
         v.getBackground().setAlpha(70);
-        //屏蔽系统自带
-        ActionBar actionBar = getSupportActionBar();
-        if(actionBar != null){
-            actionBar.hide();}
 
         zc=findViewById(R.id.button);//寻找注册按钮id
         dl=findViewById(R.id.button1);//寻找注册按钮id
-
-
-        //txtage=(TextView)findViewById(R.id.age);
-
         cb1=findViewById(R.id.cb1);//寻找复选框1控件id
         cb1.setOnCheckedChangeListener(this);//给复选框控件1安装监听器
         cb2=findViewById(R.id.cb2);//寻找复选框2控件id
         cb2.setOnCheckedChangeListener(this);//给复选框控件2安装监听器
         cb3=findViewById(R.id.cb3);//寻找复选框3控件id
         cb3.setOnCheckedChangeListener(this);//给复选框控件3安装监听器
-
         et1=findViewById(R.id.et1);//寻找输入框1控件id
         et2=findViewById(R.id.et2);//寻找输入框2控件id
-        tv=findViewById(R.id.tv);//寻找输入框2控件id
+        tv=findViewById(R.id.tv);//寻找返回结果文本控件id
 
         //注册按钮实现交互功能
         zc.setOnClickListener(new View.OnClickListener() {
@@ -58,14 +51,7 @@ public class RegisterActivity extends AppCompatActivity implements  CompoundButt
                 String strname=et1.getText().toString();//获取用户名(ID绑定用户名)
                 String strPassword=et2.getText().toString();//获取密码(ID绑定密码)
 
-                String str1="";
-                if (cb1.isChecked()) str1=str1+"\n"+cb1.getText();
-                if (cb2.isChecked()) str1=str1+"\n"+cb2.getText();
-                if (cb3.isChecked()) str1=str1+"\n"+cb3.getText();
-
-
-
-                if (strname.equals(" ")||strPassword.equals(""))//判断用户名是否等于""并且满足密码等于""
+                if (strname.equals(" ")||strPassword.equals(""))//判断用户名或密码是否为空
                     tv.setText("注册失败，请重新修改信息后再来注册");//否则执行结果文本框输出内容为"注册失败，请重新修改信息后再来注册"
                 else
                 {

@@ -39,8 +39,8 @@ public class loginActivity extends AppCompatActivity {
         password=findViewById(R.id.et_password);
         remember=findViewById(R.id.remember);
         login=findViewById(R.id.login);
+        //设置背景
         View v = findViewById(R.id.loginCL);//找到你要设透明背景的layout 的id
-
         v.getBackground().setAlpha(70);
         //获取键为remember_password的值，若不存在则为false
         boolean isRemember=pref.getBoolean("remember_password",false);
@@ -50,6 +50,7 @@ public class loginActivity extends AppCompatActivity {
             String pass=pref.getString("password","");
             account.setText(acc);
             password.setText(pass);
+            //更改记住密码状态
             remember.setChecked(true);
         }
 
@@ -71,6 +72,7 @@ public class loginActivity extends AppCompatActivity {
                     } else {
                         editor.clear();
                     }
+                    //提交偏好数据并修改
                     editor.apply();
                     Toast.makeText(loginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
                 } else {
