@@ -51,7 +51,7 @@ public class RegisterActivity extends AppCompatActivity implements  CompoundButt
                 String strname=et1.getText().toString();//获取用户名(ID绑定用户名)
                 String strPassword=et2.getText().toString();//获取密码(ID绑定密码)
 
-                if (strname.equals(" ")||strPassword.equals(""))//判断用户名或密码是否为空
+                if (strname.equals("")||strPassword.equals(""))//判断用户名或密码是否为空
                     tv.setText("注册失败，请重新修改信息后再来注册");//否则执行结果文本框输出内容为"注册失败，请重新修改信息后再来注册"
                 else
                 {
